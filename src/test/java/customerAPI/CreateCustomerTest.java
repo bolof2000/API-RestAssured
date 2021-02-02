@@ -12,19 +12,10 @@ public class CreateCustomerTest  {
     public void testCreateCustomerAPI() throws IOException {
 
          // System.out.println(response.statusCode());
-        Response response = CustomerAPI.postRequestForCustomerAPI();
+       // Response response = CustomerAPI.postRequestForCustomerAPI();
 
-        Assert.assertEquals(response.statusCode(),200);
-        response.prettyPrint();
 
-    }
 
-    @Test
-    public void testGetCustomerAPI(){
-
-        Response response = CustomerAPI.getRequestCustomerAPI();
-        Assert.assertEquals(response.statusCode(),200);
-        response.prettyPrint();
     }
 
 }
