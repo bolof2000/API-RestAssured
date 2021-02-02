@@ -1,5 +1,6 @@
 package customerAPI;
 
+import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import jdk.incubator.jpackage.internal.IOUtils;
 
@@ -11,42 +12,30 @@ import static io.restassured.RestAssured.*;
 
 
 public class CustomerEndPointAPI extends HttpMethods {
-    public Response postRequestAPI(Map<String,String> map, String URI) {
-       Response response = given().
-               auth().
-               basic("","").
-               formParam(map.toString()).
-               post(URI);
 
-       return response;
+
+    @Override
+    public Response postRequestAPI() throws IOException {
+
+       final String CustomerEndPoint = "customer";
+        baseURL();
+        return given().header("Content-Type","Application.json")
+                .body(payload("/Volumes/TECH/API/src/main/java/customerAPI/customer.json")).when().post(CustomerEndPoint);
     }
 
-    public Response getRequestAPI(Map<String,String> map, String URI) {
-        Response response = given().
-                auth().
-                basic("","").
-                formParam(map.toString()).
-                get(URI);
-        return response;
-    }
-
-    public Response putRequestAPI(Map<String,String> map, String URI) {
+    @Override
+    public Response getRequestAPI() {
         return null;
     }
 
-    public Response patchRequestAPI(Map<String,String> map, String URI) {
+    @Override
+    public Response putRequestAPI() {
         return null;
     }
 
-    /*
-    method to send data and return the response
-
-
-     */
-
-
-
-
-
+    @Override
+    public Response patchRequestAPI() {
+        return null;
     }
+}
 
